@@ -82,7 +82,9 @@ export default {
     async loadData() {
       this.isLoading = true;
       try {
-        const res = await axios.get(`/api/v1/other/`);
+        const res = await axios.get(
+          `https://ncov-node-api.herokuapp.com/api/v1/doctor/api/v1/other/`
+        );
         this.other = res.data;
         this.isLoading = false;
         console.log(this.other);
