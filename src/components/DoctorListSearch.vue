@@ -122,7 +122,9 @@ export default {
       this.isLoading = true;
       console.log(e.target.value); // should show your selected value
       try {
-        const res = await axios.get(`/api/v1/doctor/${e.target.value}`);
+        const res = await axios.get(
+          `https://ncov-node-api.herokuapp.com/api/v1/doctor/${e.target.value}`
+        );
         this.docData = res.data;
         this.isLoading = false;
         console.log(this.docData);
