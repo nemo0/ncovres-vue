@@ -14,6 +14,7 @@
           v-model="district"
           @change="onChange($event)"
         >
+          <option value="district">-- Select District --</option>
           <option value="alipurduar">Alipurduar</option>
           <option value="bankura">Bankura</option>
           <option value="birbhum">Birbhum</option>
