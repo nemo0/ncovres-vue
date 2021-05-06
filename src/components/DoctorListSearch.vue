@@ -93,7 +93,7 @@ export default {
   name: "DoctorListSearch",
   data() {
     return {
-      district: null,
+      district: "district",
       err: false,
       docData: null,
       isLoading: false,

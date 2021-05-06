@@ -91,7 +91,7 @@ export default {
   name: "OxygenSearch",
   data() {
     return {
-      district: null,
+      district: "district",
       err: false,
       oxygenSupplier: null,
       isLoading: false,

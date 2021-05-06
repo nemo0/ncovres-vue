@@ -93,7 +93,7 @@ export default {
   name: "NGOSearch",
   data() {
     return {
-      district: null,
+      district: "district",
       err: false,
       bloods: null,
       isLoading: false,

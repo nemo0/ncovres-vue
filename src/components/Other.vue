@@ -72,7 +72,6 @@ export default {
   name: "OtherRes",
   data() {
     return {
-      district: null,
       err: false,
       other: null,
       isLoading: false,
