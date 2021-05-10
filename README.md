@@ -1,24 +1,5 @@
-# client
+# NCOV Resources Vue Frontend
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This project is built to store the database of various informations related to Covid.
+The DB is currently built only for West Bengal.
+It is using **Sanity CMS** as backend and **Vue** as frontend.

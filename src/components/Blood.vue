@@ -58,7 +58,7 @@
               </div>
             </tbody>
             <tbody v-if="err === false">
-              <tr v-for="blood in bloods" v-bind:key="blood.id">
+              <tr v-for="blood in data" v-bind:key="blood.id">
                 <td>
                   {{ blood.name }}
                   <span v-if="blood.verified"
@@ -88,7 +88,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import sanityClient from "@sanity/client";
 
 export default {
   name: "NGOSearch",
@@ -96,7 +96,7 @@ export default {
     return {
       district: "district",
       err: false,
-      bloods: null,
+      data: null,
       isLoading: false,
       columns: [
         {
@@ -117,20 +117,28 @@ export default {
   methods: {
     async onChange(e) {
       this.isLoading = true;
-      console.log(e.target.value); // should show your selected value
+      let area = e.target.value;
+      const query = `*[_type == 'bloodPlasma' && district == "${area}"]`;
+      // console.log(e.target.value); // should show your selected value
+      const client = sanityClient({
+        projectId: "jbbh11um",
+        dataset: "production",
+        apiVersion: "2021-05-02", // use current UTC date - see "specifying API version"!
+        token: process.env.SANITY_AUTH_TOKEN, // or leave blank for unauthenticated usage
+        useCdn: true, // `false` if you want to ensure fresh data
+      });
       try {
-        const res = await axios.get(
-          `https://ncov-node-api.herokuapp.com/api/v1/blood/${e.target.value}`
-        );
-        this.bloods = res.data;
+        const response = await client.fetch(query);
+        this.data = response;
         this.isLoading = false;
-        console.log(this.bloods);
-        this.err = false;
+        if (this.data.length < 1) {
+          this.noData = true;
+          this.err = true;
+        } else this.err = false;
       } catch (err) {
-        console.log(err);
-        this.isLoading = false;
         this.err = true;
         console.log(this.err);
+        this.isLoading = false;
       }
     },
   },

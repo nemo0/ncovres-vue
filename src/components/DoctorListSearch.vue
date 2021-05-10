@@ -57,8 +57,8 @@
                 <div></div>
               </div>
             </tbody>
-            <tbody v-if="err === false">
-              <tr v-for="doctor in docData" v-bind:key="doctor.id">
+            <tbody v-if="!err">
+              <tr v-for="doctor in data" v-bind:key="doctor.id">
                 <td>
                   {{ doctor.name }}
                   <span v-if="doctor.doctorVerified"
@@ -78,7 +78,7 @@
             </tbody>
             <tbody v-else>
               <tr>
-                <td colspan="5" v-if="err">No Data Available</td>
+                <td colspan="5">No Data Available</td>
               </tr>
             </tbody>
           </table>
@@ -88,16 +88,16 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-
+import sanityClient from "@sanity/client";
 export default {
   name: "DoctorListSearch",
   data() {
     return {
       district: "district",
       err: false,
-      docData: null,
+      data: null,
       isLoading: false,
+      noData: false,
       columns: [
         {
           label: "Name",
@@ -121,20 +121,28 @@ export default {
   methods: {
     async onChange(e) {
       this.isLoading = true;
-      console.log(e.target.value); // should show your selected value
+      let area = e.target.value;
+      const query = `*[_type == 'doctor' && district == "${area}"]`;
+      // console.log(e.target.value); // should show your selected value
+      const client = sanityClient({
+        projectId: "jbbh11um",
+        dataset: "production",
+        apiVersion: "2021-05-02", // use current UTC date - see "specifying API version"!
+        token: process.env.SANITY_AUTH_TOKEN, // or leave blank for unauthenticated usage
+        useCdn: true, // `false` if you want to ensure fresh data
+      });
       try {
-        const res = await axios.get(
-          `https://ncov-node-api.herokuapp.com/api/v1/doctor/${e.target.value}`
-        );
-        this.docData = res.data;
+        const response = await client.fetch(query);
+        this.data = response;
         this.isLoading = false;
-        console.log(this.docData);
-        this.err = false;
+        if (this.data.length < 1) {
+          this.noData = true;
+          this.err = true;
+        } else this.err = false;
       } catch (err) {
-        console.log(err);
-        this.isLoading = false;
         this.err = true;
         console.log(this.err);
+        this.isLoading = false;
       }
     },
   },
