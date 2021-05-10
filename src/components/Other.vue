@@ -5,7 +5,7 @@
     <section id="one">
       <div class="inner">
         <header class="major">
-          <h2>Other Downloadable Materials</h2>
+          <h2>Database of NGOs and Volunteers</h2>
         </header>
         <p></p>
 
@@ -26,7 +26,7 @@
               </div>
             </tbody>
             <tbody v-if="err === false">
-              <tr v-for="o in data" v-bind:key="o.id">
+              <tr v-for="o in other" v-bind:key="o.id">
                 <td>{{ o.details }}</td>
                 <td v-if="o.file !== undefined">
                   <a :href="`${getUrlfromId(o.file.asset._ref + '')}`"
@@ -54,6 +54,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "@sanity/client";
 
@@ -72,19 +73,20 @@ export default {
   data() {
     return {
       err: false,
-      data: null,
+      other: null,
       isLoading: false,
     };
   },
   methods: {
     async loadData() {
       this.isLoading = true;
-      const query = `*[_type == 'other']`;
       try {
-        const res = await client.fetch(query);
-        this.data = res;
+        const res = await axios.get(
+          `https://ncov-node-api.herokuapp.com/api/v1/other/`
+        );
+        this.other = res.data;
         this.isLoading = false;
-        console.log(this.data);
+        console.log(this.other);
         this.err = false;
       } catch (err) {
         console.log(err);

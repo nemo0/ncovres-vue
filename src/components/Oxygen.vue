@@ -57,7 +57,7 @@
               </div>
             </tbody>
             <tbody v-if="err === false">
-              <tr v-for="supplier in data" v-bind:key="supplier.id">
+              <tr v-for="supplier in oxygenSupplier" v-bind:key="supplier.id">
                 <td>
                   {{ supplier.name }}
                   <span v-if="supplier.verified"
@@ -86,7 +86,7 @@
   </div>
 </template>
 <script>
-import sanityClient from "@sanity/client";
+import axios from "axios";
 
 export default {
   name: "OxygenSearch",
@@ -94,7 +94,7 @@ export default {
     return {
       district: "district",
       err: false,
-      data: null,
+      oxygenSupplier: null,
       isLoading: false,
       columns: [
         {
@@ -115,28 +115,20 @@ export default {
   methods: {
     async onChange(e) {
       this.isLoading = true;
-      let area = e.target.value;
-      const query = `*[_type == 'oxygen' && district == "${area}"]`;
-      // console.log(e.target.value); // should show your selected value
-      const client = sanityClient({
-        projectId: "jbbh11um",
-        dataset: "production",
-        apiVersion: "2021-05-02", // use current UTC date - see "specifying API version"!
-        token: process.env.SANITY_AUTH_TOKEN, // or leave blank for unauthenticated usage
-        useCdn: true, // `false` if you want to ensure fresh data
-      });
+      console.log(e.target.value); // should show your selected value
       try {
-        const response = await client.fetch(query);
-        this.data = response;
+        const res = await axios.get(
+          `https://ncov-node-api.herokuapp.com/api/v1/oxygen/${e.target.value}`
+        );
+        this.oxygenSupplier = res.data;
         this.isLoading = false;
-        if (this.data.length < 1) {
-          this.noData = true;
-          this.err = true;
-        } else this.err = false;
+        console.log(this.oxygenSupplier);
+        this.err = false;
       } catch (err) {
+        console.log(err);
+        this.isLoading = false;
         this.err = true;
         console.log(this.err);
-        this.isLoading = false;
       }
     },
   },
