@@ -6,9 +6,8 @@
         <h2>About the Project</h2>
       </header>
       <p>
-        Kishalay has tried to compile the most authentic resources in a single
-        place to help the people in pandemic. Kishalay is funded by the people.
-        If you support our cause, you can donate us from the link below.
+        A crowd-sourced initiative to help people in this pandemic. The data
+        shared here are collected from various sources across West Bengal.
       </p>
       <ul class="actions">
         <li>
