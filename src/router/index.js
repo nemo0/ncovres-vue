@@ -25,7 +25,7 @@ const router = new Router({
     {
       path: '/oxygen',
       component: OxygenSearch,
-      name: 'doctor-list',
+      name: 'oxygen-list',
     },
     {
       path: '/ambulance-hospitals',
