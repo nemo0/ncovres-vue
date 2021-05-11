@@ -111,7 +111,7 @@ export default {
     async onChange(e) {
       this.isLoading = true;
       let area = e.target.value;
-      const query = `*[_type == 'ambulance-hospitals' && district == "${area}"]`;
+      const query = `*[_type == 'ngos' && district == "${area}"]`;
       // console.log(e.target.value); // should show your selected value
       const client = sanityClient({
         projectId: "jbbh11um",
@@ -124,6 +124,7 @@ export default {
         const response = await client.fetch(query);
         this.data = response;
         this.isLoading = false;
+        console.log(this.data);
         if (this.data.length < 1) {
           this.noData = true;
           this.err = true;
