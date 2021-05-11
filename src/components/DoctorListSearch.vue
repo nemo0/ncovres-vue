@@ -61,7 +61,7 @@
               <tr v-for="doctor in data" v-bind:key="doctor.id">
                 <td>
                   {{ doctor.name }}
-                  <span v-if="doctor.doctorVerified"
+                  <span v-if="doctor.verified"
                     ><img
                       src="images/verified.png"
                       alt=""
