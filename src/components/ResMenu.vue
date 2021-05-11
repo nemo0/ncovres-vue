@@ -8,7 +8,9 @@
           <img src="images/pic01.jpg" alt="" />
         </span>
         <header class="major">
-          <h3><router-link to="/doctor" class="link">Doctors</router-link></h3>
+          <h3>
+            <router-link to="/doctor" class="link">Doctors</router-link>
+          </h3>
           <p>Find doctors based on your district.</p>
         </header>
       </article>
