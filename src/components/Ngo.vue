@@ -62,12 +62,13 @@
                 <td>
                   {{ ngo.name }}
                   <span v-if="ngo.verified"
-                    ><img
-                      src="images/verified.png"
-                      alt=""
-                      srcset=""
-                      class="verified"
-                  /></span>
+                    ><abbr title="Verified"
+                      ><img
+                        src="images/verified.png"
+                        alt=""
+                        srcset=""
+                        class="verified" /></abbr
+                  ></span>
                 </td>
                 <td>{{ ngo.ngovolunteer }}</td>
                 <td>{{ ngo.organization }}</td>

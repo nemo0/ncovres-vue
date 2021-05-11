@@ -5,7 +5,7 @@
     <section id="one">
       <div class="inner">
         <header class="major">
-          <h2>Doctors Available on Phone</h2>
+          <h2>Database of Doctors Available on Phone</h2>
         </header>
         <p></p>
         <select
@@ -62,12 +62,13 @@
                 <td>
                   {{ doctor.name }}
                   <span v-if="doctor.verified"
-                    ><img
-                      src="images/verified.png"
-                      alt=""
-                      srcset=""
-                      class="verified"
-                  /></span>
+                    ><abbr title="Verified"
+                      ><img
+                        src="images/verified.png"
+                        alt=""
+                        srcset=""
+                        class="verified" /></abbr
+                  ></span>
                 </td>
                 <td>{{ doctor.address }}</td>
                 <td>
@@ -158,8 +159,8 @@ span {
   padding: 0 10px;
 }
 img.verified {
-  height: 28px;
-  width: 28px;
+  height: 25px;
+  width: 25px;
 }
 
 .lds-ripple {

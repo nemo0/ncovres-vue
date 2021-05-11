@@ -62,13 +62,15 @@
                 <td>{{ ambHos.ambulanceHospital }}</td>
                 <td>
                   {{ ambHos.name }}
-                  <span v-if="ambHos.verified"
-                    ><img
-                      src="images/verified.png"
-                      alt=""
-                      srcset=""
-                      class="verified"
-                  /></span>
+                  <span v-if="ambHos.verified">
+                    <abbr title="Verified"
+                      ><img
+                        src="images/verified.png"
+                        alt=""
+                        srcset=""
+                        class="verified"
+                    /></abbr>
+                  </span>
                 </td>
                 <td>{{ ambHos.address }}</td>
                 <td>

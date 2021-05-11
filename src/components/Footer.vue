@@ -14,7 +14,7 @@
           /></a>
         </li>
         <li>
-          <a href="#" class="icon brands alt"
+          <a href="https://www.sanity.io/" class="icon brands alt"
             ><img
               src="https://www.sanity.io/static/images/logo.png"
               alt=""

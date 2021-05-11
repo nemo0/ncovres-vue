@@ -61,12 +61,13 @@
                 <td>
                   {{ supplier.name }}
                   <span v-if="supplier.verified"
-                    ><img
-                      src="images/verified.png"
-                      alt=""
-                      srcset=""
-                      class="verified"
-                  /></span>
+                    ><abbr title="Verified"
+                      ><img
+                        src="images/verified.png"
+                        alt=""
+                        srcset=""
+                        class="verified" /></abbr
+                  ></span>
                 </td>
                 <td>{{ supplier.address }}</td>
                 <td>

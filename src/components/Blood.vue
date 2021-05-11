@@ -5,7 +5,7 @@
     <section id="one">
       <div class="inner">
         <header class="major">
-          <h2>Database of NGOs and Volunteers</h2>
+          <h2>Database of Blood and Plasma Donors</h2>
         </header>
         <p></p>
         <select
@@ -61,13 +61,14 @@
               <tr v-for="blood in data" v-bind:key="blood.id">
                 <td>
                   {{ blood.name }}
-                  <span v-if="blood.verified"
-                    ><img
-                      src="images/verified.png"
-                      alt=""
-                      srcset=""
-                      class="verified"
-                  /></span>
+                  <span v-if="blood.verified">
+                    <abbr title="Verified"
+                      ><img
+                        src="images/verified.png"
+                        alt=""
+                        srcset=""
+                        class="verified" /></abbr
+                  ></span>
                 </td>
                 <td>{{ blood.organization }}</td>
                 <td>{{ blood.address }}</td>
