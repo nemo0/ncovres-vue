@@ -86,13 +86,18 @@
         </div>
       </div>
     </section>
+    <Footer />
   </div>
 </template>
 <script>
 import sanityClient from "@sanity/client";
+import Footer from "./Footer";
 
 export default {
   name: "NGOSearch",
+  components: {
+    Footer,
+  },
   data() {
     return {
       district: "district",

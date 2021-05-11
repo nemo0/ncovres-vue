@@ -11,8 +11,8 @@
       </p>
       <ul class="actions">
         <li>
-          <a href="https://www.kishalay.org/donate-us/" class="button"
-            >Donate Now</a
+          <a href="https://forms.gle/Pnm4RLQv41SJmv2g8" class="button"
+            >Submit Your Lead</a
           >
         </li>
       </ul>

@@ -7,6 +7,7 @@ import AmbulanceSearch from '../components/Ambulance';
 import NGOSearch from '../components/Ngo';
 import BloodSearch from '../components/Blood';
 import OtherRes from '../components/Other';
+import Contributors from '../components/Contributors';
 
 Vue.use(Router);
 
@@ -46,6 +47,11 @@ const router = new Router({
       path: '/other',
       component: OtherRes,
       name: 'other-list',
+    },
+    {
+      path: '/contributors',
+      component: Contributors,
+      name: 'contributor-list',
     },
   ],
   mode: 'history',

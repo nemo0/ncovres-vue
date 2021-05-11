@@ -51,12 +51,13 @@
         </div>
       </div>
     </section>
+    <Footer />
   </div>
 </template>
 <script>
 import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "@sanity/client";
-
+import Footer from "./Footer";
 const client = sanityClient({
   projectId: "jbbh11um",
   dataset: "production",
@@ -69,6 +70,9 @@ const imageBuilder = imageUrlBuilder(client);
 
 export default {
   name: "OtherRes",
+  components: {
+    Footer,
+  },
   data() {
     return {
       err: false,
