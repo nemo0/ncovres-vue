@@ -25,4 +25,4 @@ The project is licensed under MIT.
 
 [MIT](https://github.com/nemo0/ncovres-vue/blob/main/LICENSE.md) (c) nemo0 2021
 
-![Powered by Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)
+[![Powered by Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=[nemo0]&utm_campaign=oss)
